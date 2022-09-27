@@ -7,7 +7,8 @@ class LoansController < ApplicationController
 
   def index
     @loans = Loan.left_outer_joins(:branch, :issues).group(:id).order(:id).select('loans.*',
-                                                                                  'branches.name AS branch_name', 'IFNULL(SUM(issues.amount), 0) AS amount_issued')
+                                                                                  'COALESCE(SUM(issues.amount), 0)
+                                                                                   AS amount_issued')
   end
 
   def show
@@ -44,7 +45,7 @@ class LoansController < ApplicationController
   def set_loan
     id = params[:id]
     @loan = Loan.left_outer_joins(:branch, :issues).group(:id).select('loans.*',
-                                                                      'branches.name AS branch_name', 'IFNULL(SUM(issues.amount), 0.0) AS amount_issued', 'loans.amount - IFNULL(SUM(issues.amount), 0.0) AS remaining').find(id)
+                                                                      'COALESCE(SUM(issues.amount), 0.0) AS amount_issued', 'loans.amount -COALESCE(SUM(issues.amount), 0.0) AS remaining').find(id)
     @clients = Loan.left_outer_joins(:clients).where('loans.id = ?', id)
     @status = status_of @loan
   end

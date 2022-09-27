@@ -1,4 +1,4 @@
-class CreateAccounts < ActiveRecord::Migration[7.0]
+class CreateAccounts <ActiveRecord::Migration[6.1]
   def change
     create_table :accounts do |t|
       t.references :branch, :index => true, :foreign_key => { :on_delete => :restrict }

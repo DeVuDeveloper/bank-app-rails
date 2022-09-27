@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_27_065341) do
+ActiveRecord::Schema.define(version: 2022_09_27_153656) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,18 +21,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_27_065341) do
     t.bigint "accountable_id", null: false
     t.decimal "balance", precision: 12, scale: 2, default: "0.0"
     t.date "open_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable"
     t.index ["branch_id"], name: "index_accounts_on_branch_id"
+  end
+
+  create_table "accounts_clients", id: false, force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.bigint "client_id", null: false
+    t.index ["account_id", "client_id"], name: "index_accounts_clients_on_account_id_and_client_id", unique: true
+    t.index ["account_id"], name: "index_accounts_clients_on_account_id"
+    t.index ["client_id"], name: "index_accounts_clients_on_client_id"
   end
 
   create_table "branches", force: :cascade do |t|
     t.string "name", limit: 64
     t.string "city", limit: 64
     t.decimal "assets", precision: 12, scale: 2, default: "0.0"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "check_accounts", force: :cascade do |t|
@@ -45,8 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_27_065341) do
     t.string "address", limit: 256
     t.bigint "manager_id"
     t.integer "manager_type", limit: 2, default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["manager_id"], name: "index_clients_on_manager_id"
   end
 
@@ -62,16 +71,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_27_065341) do
     t.string "phone", limit: 64
     t.string "email", limit: 64, comment: "Email"
     t.string "relationship", limit: 64
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_contacts_on_client_id"
   end
 
   create_table "departments", force: :cascade do |t|
     t.string "name", limit: 64
     t.string "kind", limit: 64
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "deposit_accounts", force: :cascade do |t|
@@ -87,10 +96,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_27_065341) do
   end
 
   create_table "loans", force: :cascade do |t|
-    t.decimal "amount", precision: 12, scale: 2, default: "0.0"
+    t.integer "amount"
     t.bigint "branch_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["branch_id"], name: "index_loans_on_branch_id"
   end
 
@@ -100,8 +109,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_27_065341) do
     t.bigint "branch_id"
     t.string "accountable_type"
     t.datetime "last_access", default: -> { "CURRENT_TIMESTAMP" }
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_ownerships_on_account_id"
     t.index ["branch_id", "accountable_type", "client_id"], name: "my_index", unique: true
     t.index ["branch_id"], name: "index_ownerships_on_branch_id"
@@ -117,8 +126,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_27_065341) do
     t.boolean "manager", default: false
     t.bigint "branch_id"
     t.bigint "department_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["branch_id"], name: "index_staffs_on_branch_id"
     t.index ["department_id"], name: "index_staffs_on_department_id"
   end

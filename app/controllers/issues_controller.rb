@@ -5,7 +5,7 @@ class IssuesController < ApplicationController
     @issue = Issue.new issue_params
 
     if @issue.save
-      redirect_to loan_issues_url(@loan), success: '成功添加支付'
+      redirect_to loan_issues_url(@loan), success: 'Payment added successfully'
     else
       redirect_to loan_issues_url(@loan), alert: @issue.errors.full_messages.first
     end

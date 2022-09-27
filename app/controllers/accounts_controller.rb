@@ -76,7 +76,7 @@ class AccountsController < ApplicationController
 
   def set_account
     @account = Account.joins(:branch, :ownerships).group(:id).select('accounts.*',
-                                                                     'branches.name AS branch_name', 'COUNT(ownerships.client_id) AS owners_count').find(params[:id])
+                                                                     'COUNT(ownerships.client_id) AS owners_count').find(params[:id])
   end
 
   def account_params

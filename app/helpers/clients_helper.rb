@@ -3,7 +3,7 @@ module ClientsHelper
 
   MANAGER_TYPE_NAMES = %w[UnspecifiedLoan PersonInCharge BankAccountPersonInCharge
                           BothLoanPersonInChargeAndBankAccountPersonInCharge]
-  MANAGER_TYPE_NAMES_SHORT = %w[UnspecifiedLoanBankAccount Loan + Bank Account]
+  MANAGER_TYPE_NAMES_SHORT = %w[UnspecifiedLoanBankAccount Loan Bank Account]
 
   private_constant :MANAGER_TYPE_NAMES, :MANAGER_TYPE_NAMES_SHORT
 

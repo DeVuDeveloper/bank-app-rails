@@ -1,4 +1,4 @@
-class CreateClientsLoans < ActiveRecord::Migration[7.0]
+class CreateClientsLoans <ActiveRecord::Migration[6.1]
   def change
     create_table :clients_loans do |t|
       t.references :loan, :index => true, :foreign_key => { :on_delete => :cascade }

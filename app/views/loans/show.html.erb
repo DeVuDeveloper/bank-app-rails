@@ -6,8 +6,8 @@
   <dl class="row my-0">
     <dt class="col col-12 col-md-2">Loan number</dt>
     <dd class="col col-12 col-md-10"><%= @loan.id %></dd>
-    <dt class="col col-12 col-md-2">Branch</dt>
-    <dd class="col col-12 col-md-10"><%= link_to @loan.branch_name, branch_path(@loan.branch_id) %></dd>
+   
+  
     <dt class="col col-12 col-md-2">Amount</dt>
     <dd class="col col-12 col-md-10"><%= @loan.amount %></dd>
     <dt class="col col-12 col-md-2">Paid</dt>
@@ -25,7 +25,7 @@
 <% end %>
 
 <% content_for :footer do %>
-  <%= link_to raw('<i class="fa fas fa-money-bill-wave"></i> 支付'), loan_issues_path(@loan), class: 'btn btn-primary' %>
+  <%= link_to raw('<i class="fa fas fa-money-bill-wave"></i>Pay'), loan_issues_path(@loan), class: 'btn btn-primary' %>
   <%= link_to raw(t'actions.back'), :back, class: 'btn btn-secondary' %>
   <% unless @status == :issuing %>
     <%= link_to raw(t'actions.destroy'), @loan, method: :delete, class: 'btn btn-danger', data: { confirm: t('confirm') } %>

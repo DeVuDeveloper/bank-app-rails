@@ -1,4 +1,4 @@
-class CreateStaffs < ActiveRecord::Migration[7.0]
+class CreateStaffs < ActiveRecord::Migration[6.1]
   def change
     create_table :staffs do |t|
       t.string :person_id, :limit => 18, :unique => true, :null => false

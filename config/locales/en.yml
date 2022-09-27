@@ -79,7 +79,7 @@ en:
         taken: Cannot be repeated
         blank: Can not be empty
         greater_than_or_equal_to: 'Cannot be less than %{count}'
-        greater_than: 'Must be greater tha %{count}'
+        greater_than: 'Must be greater than %{count}'
   errors:
     format: '%{attribute}%{message}'
 

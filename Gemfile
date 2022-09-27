@@ -39,9 +39,9 @@ end
 gem 'chartkick'
 gem 'console'
 gem 'faker', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
+gem 'net-smtp', require: false
 gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'sassc-rails'
 gem 'uglifier', '>= 1.3.0'
-gem 'net-smtp', require: false
-gem 'net-imap', require: false
-gem 'net-pop', require: false

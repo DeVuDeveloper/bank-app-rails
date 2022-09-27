@@ -7,18 +7,17 @@
     <thead>
       <tr>
         <th>Number</th>
-        <th>Branch</th>
+       
         <th>Amount</th>
         <th>State</th>
         <th>Operate</th>
       </tr>
     </thead>
-
-    <tbody id="search-content">
+      <tbody id="search-content">
       <% @loans.each do |loan| %>
         <tr>
           <td><%= loan.id %></td>
-          <td><%= link_to loan.branch_name, branch_path(loan.branch_id) %></td>
+         
           <td><%= loan.amount %></td>
           <td>
             <% status = status_of loan %>
