@@ -1,0 +1,42 @@
+<% content_for :heading do %>
+  <h1 class="mb-0"><%= title "Account \##{@account.id}" %></h1>
+<% end %>
+
+<% content_for :body do %>
+  <dl class="row my-3">
+    <dt class="col col-12 col-md-2">Account number</dt>
+    <dd class="col col-12 col-md-10"><%= @account.id %></dd>
+  
+    <dt class="col col-12 col-md-2">Client</dt>
+    <dd class="col col-12 col-md-10">
+      <%= list_items @owners, name_field: :client_name, view_all: account_owners_path(@account) %>
+    </dd>
+    <dt class="col col-12 col-md-2">Account Type</dt>
+    <dd class="col col-12 col-md-10"><%= account_type_name @account.accountable_type %></dd>
+    <dt class="col col-12 col-md-2">balance</dt>
+    <dd class="col col-12 col-md-10"><%= @account.balance %></dd>
+    <dt class="col col-12 col-md-2">Account opening date</dt>
+    <dd class="col col-12 col-md-10"><%= l @account.open_date %></dd>
+
+    <%# Type-specific data %>
+    <% case @account.accountable_type %>
+    <% when 'DepositAccount' %>
+      <dt class="col col-12 col-md-2"Interest rate</dt>
+      <dd class="col col-12 col-md-10"><%= @account.accountable.interest_rate %></dd>
+      <dt class="col col-12 col-md-2">Currency type</dt>
+      <dd class="col col-12 col-md-10"><%= @account.accountable.currency.upcase %></dd>
+    <% when 'CheckAccount' %>
+      <dt class="col col-12 col-md-2">Overdraft</dt>
+      <dd class="col col-12 col-md-10"><%= @account.accountable.withdraw_amount %></dd>
+    <% end %>
+  </dl>
+<% end %>
+
+<% content_for :footer do %>
+  <%= link_to raw('<i class="fa fab fa-user-friends"></i> Associated customers'), account_owners_path(@account), class: 'btn btn-success' %>
+  <%= link_to raw(t'actions.edit'), edit_account_path(@account), class: 'btn btn-primary' %>
+  <%= link_to raw(t'actions.back'), :back, class: 'btn btn-secondary' %>
+  <%= link_to raw(t'actions.destroy'), @account, method: :delete, class: 'btn btn-danger', data: { confirm: t('confirm') } %>
+<% end %>
+
+<%= render template: 'layouts/card' %>

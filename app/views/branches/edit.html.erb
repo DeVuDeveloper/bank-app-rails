@@ -1,0 +1,6 @@
+<h1><%= title "Edit branch #{@branch.name}" %></h1>
+
+<%= render 'form', branch: @branch %>
+
+<%= link_to raw(t'actions.view'), @branch, class: 'btn btn-primary' %>
+<%= link_to raw(t'actions.back'), branches_path, class: 'btn btn-secondary' %>

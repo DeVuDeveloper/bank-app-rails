@@ -1,0 +1,35 @@
+<% content_for :heading do %>
+  <h1 class="mb-0"><%= title "Loan\##{@loan.id}" %></h1>
+<% end %>
+
+<% content_for :body do %>
+  <dl class="row my-0">
+    <dt class="col col-12 col-md-2">Loan number</dt>
+    <dd class="col col-12 col-md-10"><%= @loan.id %></dd>
+   
+  
+    <dt class="col col-12 col-md-2">Amount</dt>
+    <dd class="col col-12 col-md-10"><%= @loan.amount %></dd>
+    <dt class="col col-12 col-md-2">Paid</dt>
+    <dd class="col col-12 col-md-10"><%= @loan.amount_issued %></dd>
+    <dt class="col col-12 col-md-2">Client</dt>
+    <dd class="col col-12 col-md-10">
+      <%= list_items @clients, view_all: loan_clients_path(@loan) %>
+    </dd>
+    <dt class="col col-12 col-md-2">State</dt>
+    <dd class="col col-12 col-md-10">
+      <%= render partial: 'status_icon', locals: { status: @status } %>
+      <%= status_s @status %>
+    </dd>
+  </dl>
+<% end %>
+
+<% content_for :footer do %>
+  <%= link_to raw('<i class="fa fas fa-money-bill-wave"></i>Pay'), loan_issues_path(@loan), class: 'btn btn-primary' %>
+  <%= link_to raw(t'actions.back'), :back, class: 'btn btn-secondary' %>
+  <% unless @status == :issuing %>
+    <%= link_to raw(t'actions.destroy'), @loan, method: :delete, class: 'btn btn-danger', data: { confirm: t('confirm') } %>
+  <% end %>
+<% end %>
+
+<%= render template: 'layouts/card' %>

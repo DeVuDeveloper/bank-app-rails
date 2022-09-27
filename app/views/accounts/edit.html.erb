@@ -1,0 +1,6 @@
+<h1><%= title "Edit account \##{@account.id}" %></h1>
+
+<%= render 'form', account: @account %>
+
+<%= link_to raw(t'actions.view'), @account, class: 'btn btn-primary' %>
+<%= link_to raw(t'actions.back'), accounts_path, class: 'btn btn-secondary' %>
