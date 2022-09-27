@@ -1,0 +1,19 @@
+<% content_for :heading do %>
+  <h1 class="mb-0"><%= title "Client #{@contact.client_name} 's contacts" %></h1>
+<% end %>
+
+<% content_for :body do %>
+  <dl class="row my-0">
+    <% contact_fields_with_name.each do |field, name| %>
+      <dt class="col col-12 col-md-2"><%= name %></dt>
+      <dd class="col col-12 col-md-10"><%= @contact[field] %></dd>
+    <% end %>
+  </dl>
+<% end %>
+
+<% content_for :footer do %>
+  <%= link_to raw(t'actions.back'), :back, class: 'btn btn-primary' %>
+  <%= link_to 'Back to list', clients_path, class: 'btn btn-secondary' %>
+<% end %>
+
+<%= render template: 'layouts/card' %>

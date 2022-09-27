@@ -1,0 +1,58 @@
+<% content_for :heading do %>
+  <h1 class="mb-0"><%= title 'Staff' %></h1>
+<% end %>
+
+<% content_for :body do %>
+  <table class="table table-hover mb-0 with-action">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th class="d-none d-xl-table-cell">Identity number</th>
+        <th class="d-none d-lg-table-cell">Telephone</th>
+        <th class="d-none">Adress</th>
+        <th>Start date</th>
+        <th>Manager？</th>
+        <th class="d-none d-md-table-cell">Branch</th>
+        <th class="d-none d-lg-table-cell">Department</th>
+        <th>Operate</th>
+      </tr>
+    </thead>
+
+    <tbody id="search-content">
+      <% @staffs.each do |staff| %>
+        <tr>
+          <td><%= link_to staff.name, staff %></td>
+          <td class="d-none d-xl-table-cell"><%= staff.person_id %></td>
+          <td class="d-none d-lg-table-cell"><%= staff.phone %></td>
+          <td class="d-none"><%= staff.address %></td>
+          <td><%= staff.start_date %></td>
+          <td>
+            <% if staff.manager %>
+              <i class="fa fas fa-check text-success"></i>
+              <div class="sr-only">经理</div>
+            <% else %>
+              <i class="fa fas fa-times text-danger"></i>
+            <% end %>
+          </td>
+          <td class="d-none d-md-table-cell"><%= staff.branch_name %></td>
+          <td class="d-none d-lg-table-cell"><%= staff.department_name %></td>
+          <td>
+            <%= link_to raw(t'actions.view'), staff, class: 'btn btn-outline-primary' %>
+            <%= link_to raw(t'actions.edit'), edit_staff_path(staff), class: 'btn btn-outline-secondary' %>
+            <%= link_to raw(t'actions.destroy'), staff, method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-outline-danger d-none d-md-inline-block' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% content_for :footer do %>
+  <div>
+    <%= link_to 'New employee', new_staff_path, class: 'btn btn-success' %>
+    <a class="btn btn-primary" href="#search-form" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="search-form"><%= raw(t'actions.search') %></a>
+  </div>
+  <%= render partial: 'quick_search' %>
+<% end %>
+
+<%= render template: 'layouts/listing' %>

@@ -1,0 +1,50 @@
+<% card_class = 'shadow flex-grow-1 px-0 mb-4' %>
+<% dl_class = 'row mb-0' %>
+<% dt_class = 'col col-6 px-2 text-right' %>
+<% dd_class = 'col col-6 px-2' %>
+
+<%= render partial: 'svg_header', locals: { file: 'combo-chart.svg', text: title('Statistics') } %>
+
+<div class="row d-flex flex-column flex-md-row">
+  <div class="col col-12 col-md-6 d-flex flex-column flex-grow-1">
+    <div class="card <%= card_class %>">
+      <div class="card-header text-center bg-success text-light">
+        <h3 class="mb-0 font-weight-normal">Savings business</h3>
+      </div>
+
+      <div class="card-body pb-3">
+        <dl class="<%= dl_class %>">
+          <% @deposit_card_content.each do |dt, dd| %>
+            <dt class="<%= dt_class %>"><%= dt %></dt>
+            <dd class="<%= dd_class %>"><%= dd %></dd>
+          <% end %>
+        </dl>
+      </div>
+
+      <div class="card-footer text-center bg-success text-light">
+        <%= link_to raw(t'actions.info'), deposit_stats_path, class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col col-12 col-md-6 d-flex flex-column flex-grow-1">
+    <div class="card <%= card_class %>">
+      <div class="card-header text-center bg-danger text-light">
+        <h3 class="mb-0 font-weight-normal">Loan service</h3>
+      </div>
+
+      <div class="card-body pb-3">
+        <dl class="<%= dl_class %>">
+          <% @loan_card_content.each do |dt, dd| %>
+            <dt class="<%= dt_class %>"><%= dt %></dt>
+            <dd class="<%= dd_class %>"><%= dd %></dd>
+          <% end %>
+        </dl>
+      </div>
+
+      <div class="card-footer text-center bg-danger text-light">
+        <%= link_to raw(t'actions.info'), loan_stats_path, class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,33 +1,85 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   "true": "foo"
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  date:
+    formats:
+      default: '%Y-%m-%d'
+  time:
+    formats:
+      default: '%Y-%m-%d %H:%M:%S'
+  helpers:
+    submit:
+      create: 'Create%{model}'
+      update: 'Renew%{model}'
+  actions:
+    back: '<i class="fa fas fa-chevron-circle-left"></i> Return'
+    destroy: '<i class="fa fas fa-times-circle"></i> Delete'
+    edit: '<i class="fa fas fa-edit"></i> Edit'
+    info: '<i class="fa fas fa-info-circle"></i>Information'
+    search: '<i class="fa fas fa-search"></i> Search'
+    view: '<i class="fa fas fa-eye"></i> Check'
+  confirm: 'Are you sure？'
+  activerecord:
+    models:
+      branch: Branch
+      department: Department
+      staff: Staff
+      client: Client
+      account: Account
+      loan: Loan
+      issue: Pay
+    attributes:
+      branch:
+        name: Branch name
+        city: City
+        assets: Assets
+      department:
+        name: Department name
+        kind: Department Type
+      staff:
+        person_id: Identity number
+        name: Name
+        phone: Telephone
+        address: Address
+        start_date: Start date
+        manager: Manager
+        branch_id: Branch
+        department_id: Department
+      client:
+        person_id: Identity number
+        name: Name
+        phone: Telephone
+        address: Address
+        manager_id: Principal
+        manager_type: Responsible type
+      contact:
+        name: Contact name
+        phone: Contact number
+        email: Contact email
+        relationship: Relationship with customers
+      account:
+        branch_id: Branch
+        accountable_type: Account type
+        balance: Balance
+        open_date: Account opening date
+      deposit_account:
+        interest_rate: Interest rate
+        currency: Currency type
+      check_account:
+        withdraw_amount: Overdraft
+      ownership:
+        client_id: Associated customers
+      loan:
+        branch_id: Branch
+        amount: Amount
+        client_ids: Client
+      issue:
+        date: Release date
+        amount: Amount
+    errors:
+      messages:
+        taken: Cannot be repeated
+        blank: Can not be empty
+        greater_than_or_equal_to: 'Cannot be less than %{count}'
+        greater_than: 'Must be greater tha %{count}'
+  errors:
+    format: '%{attribute}%{message}'
+

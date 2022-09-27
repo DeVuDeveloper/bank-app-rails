@@ -1,0 +1,26 @@
+<% content_for :heading do %>
+  <h1 class="mb-0"><%= title "Department #{@department.name}" %></h1>
+<% end %>
+
+<% content_for :body do %>
+  <dl class="row my-0">
+    <dt class="col col-12 col-md-2">Number</dt>
+    <dd class="col col-12 col-md-10"><%= @department.id %></dd>
+    <dt class="col col-12 col-md-2">Name</dt>
+    <dd class="col col-12 col-md-10"><%= @department.name %></dd>
+    <dt class="col col-12 col-md-2">Type</dt>
+    <dd class="col col-12 col-md-10"><%= @department.kind %></dd>
+    <dt class="col col-12 col-md-2">Staff</dt>
+    <dd class="col col-12 col-md-10">
+      <%= list_items @staffs, view_all: department_staffs_path(@department) %>
+    </dd>
+  </dl>
+<% end %>
+
+<% content_for :footer do %>
+  <%= link_to raw(t'actions.edit'), edit_department_path(@department), class: 'btn btn-primary' %>
+  <%= link_to raw(t'actions.back'), departments_path, class: 'btn btn-secondary' %>
+  <%= link_to raw(t'actions.destroy'), @department, method: :delete, class: 'btn btn-danger', data: { confirm: t('confirm') } %>
+<% end %>
+
+<%= render template: 'layouts/card' %>

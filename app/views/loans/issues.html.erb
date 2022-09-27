@@ -1,0 +1,79 @@
+<% content_for :heading do %>
+  <h1 class="mb-0"><%= title "Loan \##{@loan.id} Release record" %></h1>
+<% end %>
+
+<% content_for :body do %>
+  <dl class="row <%= 'mb-0' if @status == :unissued %>">
+    <dt class="col col-12 col-md-2">State</dt>
+    <dd class="col col-12 col-md-10">
+      <%= render partial: 'status_icon', locals: { status: @status } %>
+      <%= status_s @status %>
+    </dd>
+    <% unless @status == :issued %>
+      <dt class="col col-12 col-md-2">Remaining</dt>
+      <dd class="col col-12 col-md-10">
+        <%= @loan.remaining %>
+      </dd>
+    <% end %>
+  </dl>
+
+  <% unless @status == :unissued %>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @issues.each do |issue| %>
+          <tr>
+            <td><%= issue.date %></td>
+            <td><%= issue.amount %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>
+
+<% content_for :footer do %>
+  <%= link_to raw(t'actions.back'), @loan, class: 'btn btn-secondary' %>
+<% end %>
+
+<%= render template: 'layouts/card' %>
+
+<% unless @status == :issued %>
+  <%= form_with url: new_issue_path, local: true, class: 'my-3' do |form| %>
+    <div class="card">
+      <div class="card-header">
+        <h3 class="my-0">branch_loans_path</h3>
+      </div>
+
+      <div class="card-body">
+        <%= render partial: 'error_explanation', locals: { model: @issue } %>
+
+        <%= form.fields_for :issues, Issue.new do |f| %>
+          <div class="form-group">
+            <%= f.label :date %>
+            <div class="form-row">
+              <div class="col col-4">
+                <%= f.date_select :date, { date_separator: '</div><div class="col col-4">' }, { class: 'form-control' } %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :amount %>
+            <%= f.number_field :amount, min: 0.0, max: @loan.remaining, step: 0.01, class: 'form-control' %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="card-footer">
+        <%= form.submit 'Loans', class: 'btn btn-success' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

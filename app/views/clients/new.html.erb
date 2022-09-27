@@ -1,0 +1,7 @@
+<h1><%= title 'New customer' %></h1>
+
+<%= render 'form', client: @client %>
+
+<div class="mt-2">
+  <%= link_to raw(t'actions.back'), clients_path, class: 'btn btn-secondary' %>
+</div>

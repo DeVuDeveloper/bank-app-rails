@@ -1,6 +1,6 @@
 module PersonsHelper
-  FIELDS = %i[name person_id phone address]
-  NAMES = %w[Name ID Number Phone Address]
+  FIELDS = %i[name person_id phone address].freeze
+  NAMES = %w[Name ID Number Phone Address].freeze
 
   private_constant :FIELDS, :NAMES
 

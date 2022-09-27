@@ -1,0 +1,30 @@
+<% content_for :heading do %>
+  <h1 class="mb-0"><%= title "Client #{@client.name}" %></h1>
+<% end %>
+
+<% content_for :body do %>
+  <dl class="row my-0">
+    <% fields_with_name.each do |field, name| %>
+      <dt class="col col-12 col-md-2"><%= name %></dt>
+      <dd class="col col-12 col-md-10"><%= @client[field] %></dd>
+    <% end %>
+    <dt class="col col-12 col-md-2">Principal</dt>
+    <dd class="col col-12 col-md-10"><%= link_to @client.manager_name, staff_path(@client.manager_id) %></dd>
+    <dt class="col col-12 col-md-2">Responsible type</dt>
+    <dd class="col col-12 col-md-10"><%= manager_type_name @client.manager_type %></dd>
+    <dt class="col col-12 col-md-2">Contact</dt>
+    <dd class="col col-12 col-md-10"><%= link_to @client.contact_name, contact_path(@client) %></dd>
+    <dt class="col col-12 col-md-2">Account</dt>
+    <dd class="col col-12 col-md-10"><%= link_to raw(t'actions.view'), client_accounts_path(@client) %></dd>
+    <dt class="col col-12 col-md-2">Loan</dt>
+    <dd class="col col-12 col-md-10"><%= link_to raw(t'actions.view'), client_loans_path(@client) %></dd>
+  </dl>
+<% end %>
+
+<% content_for :footer do %>
+  <%= link_to raw(t'actions.edit'), edit_client_path(@client), class: 'btn btn-primary' %>
+  <%= link_to raw(t'actions.back'), clients_path, class: 'btn btn-secondary' %>
+  <%= link_to raw(t'actions.destroy'), @client, method: :delete, class: 'btn btn-danger', data: { confirm: t('confirm') } %>
+<% end %>
+
+<%= render template: 'layouts/card' %>

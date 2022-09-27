@@ -1,0 +1,33 @@
+.svg-inline {
+	font-size: 1.33333em;
+	width: 1.25em;
+	height: 1em;
+	vertical-align: -0.225em;
+
+	&.compact {
+		width: initial;
+	}
+
+	&.zero-width {
+		@media screen and (min-width: 576px) {
+			margin-left: -1em;
+		}
+	}
+
+	&.svg-lg {
+		font-size: 2em;
+		width: initial;
+
+		&.short {
+			margin-top: -0.2em;
+		}
+	}
+
+	&.svg-xl {
+		font-size: 2.5em;
+		margin-top: -1em;
+		margin-bottom: -0.35em;
+		width: initial;
+		vertical-align: initial;
+	}
+}

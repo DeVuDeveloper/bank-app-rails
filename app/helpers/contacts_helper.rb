@@ -1,8 +1,8 @@
 module ContactsHelper
   extend self
 
-  FIELDS = %i[name phone email relationship]
-  NAMES = %w[Name Phone Email Relationship]
+  FIELDS = %i[name phone email relationship].freeze
+  NAMES = %w[Name Phone Email Relationship].freeze
 
   private_constant :FIELDS, :NAMES
 

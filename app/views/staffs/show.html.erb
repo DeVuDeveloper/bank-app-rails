@@ -1,0 +1,36 @@
+<% content_for :heading do %>
+  <h1 class="mb-0"><%= title "Staff #{@staff.name}" %></h1>
+<% end %>
+
+<% content_for :body do %>
+  <dl class="row my-0">
+    <dt class="col col-12 col-md-2">Staff</dt>
+    <dd class="col col-12 col-md-10"><%= @staff.name %></dd>
+    <dt class="col col-12 col-md-2">Identity number</dt>
+    <dd class="col col-12 col-md-10"><%= @staff.person_id %></dd>
+    <dt class="col col-12 col-md-2">Telephone</dt>
+    <dd class="col col-12 col-md-10"><%= @staff.phone %></dd>
+    <dt class="col col-12 col-md-2">Address</dt>
+    <dd class="col col-12 col-md-10"><%= @staff.address %></dd>
+    <dt class="col col-12 col-md-2">Start date</dt>
+    <dd class="col col-12 col-md-10"><%= @staff.start_date %></dd>
+    <dt class="col col-12 col-md-2">Manager</dt>
+    <dd class="col col-12 col-md-10"><%= boolean_s @staff.manager %></dd>
+    <dt class="col col-12 col-md-2">Branch</dt>
+    <dd class="col col-12 col-md-10"><%= link_to @staff.branch_name, branch_path(@staff.branch_id) %></dd>
+    <dt class="col col-12 col-md-2">Department</dt>
+    <dd class="col col-12 col-md-10"><%= link_to @staff.department_name, department_path(@staff.department_id) %></dd>
+    <dt class="col col-12 col-md-2">Responsible customer</dt>
+    <dd class="col col-12 col-md-10">
+      <%= list_items @clients, view_all: staff_clients_path(@staff) %>
+    </dd>
+  </dl>
+<% end %>
+
+<% content_for :footer do %>
+  <%= link_to raw(t'actions.edit'), edit_staff_path(@staff), class: 'btn btn-primary' %>
+  <%= link_to raw(t'actions.back'), :back, class: 'btn btn-secondary' %>
+  <%= link_to raw(t'actions.destroy'), @staff, method: :delete, class: 'btn btn-danger', data: { confirm: t('confirm') } %>
+<% end %>
+
+<%= render template: 'layouts/card' %>
