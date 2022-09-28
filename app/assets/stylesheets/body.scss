@@ -1,7 +1,13 @@
 body {
-	background-color: #b1dbe2;
-
-	> nav, > footer {
-		background-color: #b6ccdd !important;
-	}
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(229, 238, 237, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  > nav,
+  > footer {
+    background-color: #141617 !important;
+  }
 }
