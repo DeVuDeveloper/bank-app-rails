@@ -19,16 +19,16 @@ en:
   confirm: 'Are you sure？'
   activerecord:
     models:
-      branch: Branch
+      branch: Filiale
       department: Department
       staff: Staff
       client: Client
       account: Account
-      loan: Loan
+      loan: Credit
       issue: Pay
     attributes:
       branch:
-        name: Branch name
+        name: Filiale name
         city: City
         assets: Assets
       department:
@@ -41,23 +41,23 @@ en:
         address: Address
         start_date: Start date
         manager: Manager
-        branch_id: Branch
+        branch_id: Filiale
         department_id: Department
       client:
         person_id: Identity number
         name: Name
         phone: Telephone
         address: Address
-        manager_id: Principal
-        manager_type: Responsible type
+        manager_id: CEO
+        manager_type: Type
       contact:
         name: Contact name
         phone: Contact number
         email: Contact email
         relationship: Relationship with customers
       account:
-        branch_id: Branch
-        accountable_type: Account type
+        branch_id: Filiale
+        accountable_type: Account Type
         balance: Balance
         open_date: Account opening date
       deposit_account:
@@ -68,7 +68,7 @@ en:
       ownership:
         client_id: Associated customers
       loan:
-        branch_id: Branch
+        branch_id: Filiale
         amount: Amount
         client_ids: Client
       issue:
@@ -77,7 +77,7 @@ en:
     errors:
       messages:
         taken: Cannot be repeated
-        blank: Can not be empty
+        blank: Cannot be empty
         greater_than_or_equal_to: 'Cannot be less than %{count}'
         greater_than: 'Must be greater than %{count}'
   errors:

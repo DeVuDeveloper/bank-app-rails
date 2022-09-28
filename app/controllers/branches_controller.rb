@@ -20,7 +20,7 @@ class BranchesController < ApplicationController
     @branch = Branch.new(branch_params)
 
     if @branch.save
-      redirect_to @branch, success: 'Branch successfully created'
+      redirect_to @branch, success: 'Filiale successfully created'
     else
       render :new
     end
@@ -36,9 +36,9 @@ class BranchesController < ApplicationController
 
   def destroy
     if @branch.destroy
-      redirect_to branches_url, success: 'Branch has been deleted'
+      redirect_to branches_url, success: 'Filiale has been deleted'
     else
-      redirect_back fallback_location: branches_url, alert: 'Branch deletion failed'
+      redirect_back fallback_location: branches_url, alert: 'Filiale deletion failed'
     end
   end
 

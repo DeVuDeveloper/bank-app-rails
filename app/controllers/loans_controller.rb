@@ -29,7 +29,7 @@ class LoansController < ApplicationController
     @loan = Loan.new(loan_params)
 
     if @loan.save
-      redirect_to @loan, success: 'Loan successfully created'
+      redirect_to @loan, success: 'Credit successfully created'
     else
       render :new
     end
@@ -37,7 +37,7 @@ class LoansController < ApplicationController
 
   def destroy
     @loan.destroy
-    redirect_to loans_url, success: 'Loan deleted successfully'
+    redirect_to loans_url, success: 'Credit deleted successfully'
   end
 
   private

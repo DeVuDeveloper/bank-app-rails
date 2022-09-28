@@ -1,5 +1,4 @@
 class Account < ApplicationRecord
-  include Accountable
   belongs_to :branch
   belongs_to :accountable, polymorphic: true
   has_many :ownerships, dependent: :destroy

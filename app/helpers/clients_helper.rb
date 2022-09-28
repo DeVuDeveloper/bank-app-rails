@@ -1,9 +1,8 @@
 module ClientsHelper
   include AccountsHelper
 
-  MANAGER_TYPE_NAMES = %w[UnspecifiedLoan PersonInCharge BankAccountPersonInCharge
-                          BothLoanPersonInChargeAndBankAccountPersonInCharge]
-  MANAGER_TYPE_NAMES_SHORT = %w[UnspecifiedLoanBankAccount Loan Bank Account]
+  MANAGER_TYPE_NAMES = ['Bank Account', 'Person In Charge', 'Credit'].freeze
+  MANAGER_TYPE_NAMES_SHORT = %w[UnspecifiedLoanBankAccount Credit Account]
 
   private_constant :MANAGER_TYPE_NAMES, :MANAGER_TYPE_NAMES_SHORT
 

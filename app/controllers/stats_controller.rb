@@ -36,18 +36,17 @@ class StatsController < ApplicationController
     end
     @issues_amount = Issue.sum(:amount)
 
-    @deposit_card_content = %w[Branch AccountTotal AmountSavingsAccount CheckingAccount].zip [
+    @deposit_card_content = ["Filiale Account", "Total Amount Savings Account", "Checking Account"].zip [
       @branches_count, @accounts_count, helpers.currency_value(@accounts_amount),
       (@deposit_accounts_count ||= 0), (@check_accounts_count ||= 0)
     ]
-    @loan_card_content = %w[Sub-branchLoan TotalAmountPaid NotDisbursed InDisbursement Disbursed].zip [
+    @loan_card_content = %w[Sub-FilialeLoan TotalAmountPaid NotDisbursed InDisbursement Disbursed].zip [
       @branches_count, @loans_count,
       helpers.currency_value(@loans_amount), helpers.currency_value(@issues_amount),
       (@unissued ||= 0), (@issuing ||= 0), (@issued ||= 0)
     ]
   end
 
-  # GET /stats/deposit
   def deposit
     @start_year = Account.order(open_date: :asc).select(:open_date).first&.open_date&.year || Date.today.year
     return unless @action
@@ -91,7 +90,6 @@ class StatsController < ApplicationController
     @data_branches = @query.except(:select, :group, :order).select('DISTINCT branch_id',
                                                                    'branches.name AS branch_name').order(branch_id: :ASC)
     @query = @query.joins(:ownerships)
-  
   end
 
   def loan
@@ -116,7 +114,7 @@ class StatsController < ApplicationController
       orders = { year: :asc, branch_id: :asc }
     when :quarter
       selects << 'EXTRACT(YEAR FROM Date) AS year'
-      
+
       selects << 'CONCAT(YEAR(date), " Q", (MONTH(date) + 2) DIV 3) AS display_time'
       groups << 'quarter'
       orders = { year: :asc, quarter: :asc, branch_id: :asc }
@@ -137,7 +135,6 @@ class StatsController < ApplicationController
     @data_branches = @query.except(:select, :group, :order).select('DISTINCT branch_id',
                                                                    'branches.name AS branch_name')
     @query = @query.joins(:clients, :issues)
-
   end
 
   private

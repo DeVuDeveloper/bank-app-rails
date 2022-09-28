@@ -68,15 +68,18 @@ class AccountsController < ApplicationController
   end
 
   def destroy
-    @account.destroy
-    redirect_to accounts_url, success: 'Account has been cancelled'
+    if @account.destroy === true
+      redirect_to accounts_url, success: 'Account deleted'
+    else
+      redirect_to accounts_url, alert: 'Ask Manager for canceling this account'
+    end
   end
 
   private
 
   def set_account
-    @account = Account.joins(:branch, :ownerships).group(:id).select('accounts.*',
-                                                                     'COUNT(ownerships.client_id) AS owners_count').find(params[:id])
+    @account = Account.joins(:branch, :ownerships).group('id', 'branches.name').select('accounts.*',
+                                                                                       'branches.name AS branch_name', 'COUNT(ownerships.client_id) AS owners_count').find(params[:id])
   end
 
   def account_params
