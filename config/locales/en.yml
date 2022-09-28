@@ -12,7 +12,7 @@ en:
   actions:
     back: '<i class="fa fas fa-chevron-circle-left"></i> Return'
     destroy: '<i class="fa fas fa-times-circle"></i> Delete'
-    edit: '<i class="fa fas fa-edit"></i> Edit'
+    edit: '<i class="fa fas fa-edit"></i> ~Edit~'
     info: '<i class="fa fas fa-info-circle"></i>Information'
     search: '<i class="fa fas fa-search"></i> Search'
     view: '<i class="fa fas fa-eye"></i> Check'
