@@ -6,7 +6,7 @@ class Issue < ApplicationRecord
 
   def check_amount
     if amount > loan.remaining
-      errors.add :base, 'Payment cannot exceed the total loan amount'
+      errors.add :base, 'Payment cannot exceed the total credit amount'
     else
       loan.reset_remaining
     end

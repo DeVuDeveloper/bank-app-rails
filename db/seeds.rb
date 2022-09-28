@@ -35,29 +35,29 @@ def generate_contact
 end
 
 $branches = [
-  ["HKUST Head Office", "Hefei", generate_number(1000..9999)],
-  ["Tsinghua Branch", "Beijing", generate_number(1000..9999)],
-  ["Cannon Sub-branch", "Hangzhou", generate_number(1000..9999)],
-  ["Hebei Sub-branch", generate_number(1000..9999)],
+  ["JPMorgan Chase", "New York City", generate_number(1000..9999)],
+  ["Bank of America", "San Francisco", generate_number(1000..9999)],
+  ["Citigroup", "New York City", generate_number(1000..9999)],
+  ["U.S. Bancorp","Minnesota", generate_number(1000..9999)],
 ].each { |a| Branch.create({ :name => a[0], :city => a[1], :assets => a[2] }) }
 
 $departments = [
-  ["Taoky Strong"],
-  ["Monthly Cards"],
-  %w(FLXG Chobe),
+  ["Investment Bank", "Deposit"],
+  ["Commercial Banking", "Credit"],
+  ["Wealth Management", "Asset"],
 ].each { |a| Department.create({ :name => a[0], :kind => a[1] }) }
 
 generate_staffs(8).each { |h| Staff.create h }
 
 [
-  ["Franklin Clinton", "328-555-0156", "3671 Whispymound Drive, Vinewood Hills, Los Santos", 1, 3],
-  ["Michael De Santa", "328-555-0108", "Portola Drive, Rockford Hills, Los Santos", 2, 1],
-  ["Trevor Philips", "273-555-0136", "Zancudo Avenue, Sandy Shores, Blaine County", 1, 2],
-  ["Lamar Davis", "N/A", "Forum Drive, Strawberry, Los Santos", 1, 1],
-  ["Lester Crest", "N/A", "Amarillo Vista, El Burro Heights, Los Santos", 6, 2],
-  ["Devin Weston", "N/A", "Buen Vino Road, Tongva Hills, Los Santos County", 3, 3],
-  ["Steve Haines", "328-555-0150", "Los Santos", 2, 2],
-  ["Stretch", "N/A", "Strawberry, Los Santos", 2, 1],
+  ["John Thane", "328-555-0156", "3671 Whispymound Drive, Vinewood Hills, Los Santos", 1, 3],
+  ["Meagan Xzavier", "328-555-0108", "Portola Drive, Rockford Hills, Los Santos", 2, 1],
+  ["Ben Charlene", "273-555-0136", "Zancudo Avenue, Sandy Shores, Blaine County", 1, 2],
+  ["Marvyn Cleveland", "N/A", "Forum Drive, Strawberry, Los Santos", 1, 1],
+  ["Adeline Kristin", "N/A", "Amarillo Vista, El Burro Heights, Los Santos", 6, 2],
+  ["Jeremiah Kev", "N/A", "Buen Vino Road, Tongva Hills, Los Santos County", 3, 3],
+  ["Liana Cammie", "328-555-0150", "Los Santos", 2, 2],
+  ["Elouise Hillary", "N/A", "Strawberry, Los Santos", 2, 1],
 ].each do |a|
   Client.create({ :name => a[0], :person_id => Faker::IDNumber.invalid, :phone => a[1],
 :address => a[2], :manager_id => a[3], :manager_type => a[4], :contact_attributes => generate_contact, })

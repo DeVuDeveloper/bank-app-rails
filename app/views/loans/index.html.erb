@@ -1,5 +1,5 @@
 <% content_for :heading do %>
-  <h1 class="mb-0"><%= title 'Loan' %></h1>
+  <h1 class="mb-0"><%= title 'Credit' %></h1>
 <% end %>
 
 <% content_for :body do %>
@@ -38,7 +38,7 @@
 
 <% content_for :footer do %>
   <div>
-    <%= link_to 'New Loan', new_loan_path, class: 'btn btn-success' %>
+    <%= link_to 'Create Credit', new_loan_path, class: 'btn btn-primary' %>
     <a class="btn btn-primary" href="#search-form" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="search-form"><%= raw(t'actions.search') %></a>
   </div>
   <%= render partial: 'quick_search' %>

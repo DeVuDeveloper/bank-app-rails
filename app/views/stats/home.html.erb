@@ -1,11 +1,11 @@
 <% title 'Front page' %>
 
-<h1 class="text-center py-4 py-md-5 display-4 d-md-flex justify-content-center">
+<div class="text-center py-4 py-md-5 display-4 d-md-flex justify-content-center">
   <span class="d-block d-md-inline pb-4 pb-md-0">
     <%= svg_tag 'bank-home.svg', class: 'svg-inline svg-xl' %>
   </span>
-  <%= site_name %>
-</h1>
+  
+</div>
 
 <div class="row">
   <% @cards.each do |model, svg| %>
@@ -19,7 +19,7 @@
             <%= svg_tag "#{svg}.svg", class: 'svg-inline compact' %>
             <%= model.count %> <%# 个 model.display_name %>
           </h3>
-          <%= link_to 'Check', send(model.name.underscore.pluralize + '_path'), class: "btn btn-lg btn-block btn-primary" %>
+          <%= link_to 'Check', send(model.name.underscore.pluralize + '_path'), class: "btn btn-lg btn-block btn-dark" %>
         </div>
       </div>
     </div>

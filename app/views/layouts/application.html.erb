@@ -17,11 +17,11 @@
   </head>
 
   <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-dark shadow-sm">
       <%= link_to root_path, class: 'navbar-brand' do %>
         <%= image_tag "bank.svg", data: { svg_fallback: asset_path('bank.svg') }, class: 'svg-inline' %>
         <%# site_name %>
-        JPMorgan Chase
+        Bank App
       <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -55,8 +55,8 @@
         <ul class="navbar-nav my-2 my-md-0">
           <li class="nav-item">
             <%= link_to about_path, class: 'nav-link d-lg-block' do %>
-              <i class="fas fa-fw fa-info-circle"></i>
-             about
+              <i class="	fab fa-playstation"></i>
+             Bonus Game
             <% end %>
           </li>
         </ul>
@@ -75,10 +75,10 @@
 
       <%= yield %>
     </div>
-    <footer class="footer shadow py-3 py-md-4 border-top">
+    <footer class="footer shadow py-3 py-md-4 border-top text-center">
       <div class="container px-sm-0">
         <p class="text-muted my-0">
-        <a href="">Bank App</a>, Copyright &copy; 2022-<%= Time.now.strftime '%Y' %> <a href="">JPMorgan Chase</a>
+        <a href="https://github.com/VuDej/bank-app-rails">Bank App</a> Copyright &copy;<%= Time.now.strftime '%Y' %> <a href="https://www.linkedin.com/in/dejan-vujovic/">Dejan</a>
       
         </p>
       </div>
@@ -86,13 +86,11 @@
     <div id="body-bg" style="display: none;">
     </div>
 
-    <%# Optional scripts %>
-    <%# jQuery, Popper.js, Bootstrap, Rails UJS, Font Awesome, Vue.js %>
     <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js", integrity: "sha256-ngFW3UnAN0Tnm76mDuu7uUtYEcG3G5H1+zioJw3t+68=", crossorigin: "anonymous" %>
     <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js", integrity: "sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=", crossorigin: "anonymous" %>
     <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js", integrity: "sha256-Xt8pc4G0CdcRvI0nZ2lRpZ4VHng0EoUDMlGcBSQ9HiQ=", crossorigin: "anonymous", async: true %>
     <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/rails-ujs/lib/assets/compiled/rails-ujs.min.js", crossorigin: "anonymous", async: true %>
-    <%# javascript_include_tag "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/js/all.min.js", crossorigin: "anonymous", async: true %>
+  
     <%= yield :body_after %>
   </body>
 </html>

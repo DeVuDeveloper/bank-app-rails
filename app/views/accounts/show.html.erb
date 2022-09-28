@@ -6,7 +6,8 @@
   <dl class="row my-3">
     <dt class="col col-12 col-md-2">Account number</dt>
     <dd class="col col-12 col-md-10"><%= @account.id %></dd>
-  
+    <dt class="col col-12 col-md-2">Filijala</dt>
+    <dd class="col col-12 col-md-10"><%= link_to @account.branch_name, branch_path(@account.branch_id) %></dd>
     <dt class="col col-12 col-md-2">Client</dt>
     <dd class="col col-12 col-md-10">
       <%= list_items @owners, name_field: :client_name, view_all: account_owners_path(@account) %>

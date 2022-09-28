@@ -1,12 +1,12 @@
 <% content_for :heading do %>
-  <h1 class="mb-0"><%= title 'Branch' %></h1>
+  <h1 class="mb-0"><%= title 'Filiale' %></h1>
 <% end %>
 
 <% content_for :body do %>
   <table class="table table-hover mb-0 with-action">
     <thead>
       <tr>
-        <th>Branch name</th>
+        <th>Filiale name</th>
         <th>City</th>
         <th>Assets</th>
         <th>Operate</th>
@@ -32,7 +32,7 @@
 
 <% content_for :footer do %>
   <div>
-    <%= link_to 'New Branch', new_branch_path, class: 'btn btn-success' %>
+    <%= link_to 'New Filiale', new_branch_path, class: 'btn btn-primary' %>
     <a class="btn btn-primary" href="#search-form" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="search-form"><%= raw(t'actions.search') %></a>
   </div>
   <%= render partial: 'quick_search' %>

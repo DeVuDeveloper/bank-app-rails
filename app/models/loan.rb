@@ -10,7 +10,7 @@ class Loan < ApplicationRecord
 
   def check_issuing
     if status == :issuing
-      errors.add :base, 'Loans in disbursement are not allowed to delete'
+      errors.add :base, 'Credits in disbursement are not allowed to delete'
       throw :abort
     end
   end

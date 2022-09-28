@@ -37,7 +37,7 @@ module ApplicationHelper
 
   def navbar_stats
     [stats_path, deposit_stats_path, loan_stats_path].zip %w[chart-area piggy-bank hand-holding-usd],
-                                                          %w[OverviewSavings BusinessLoan Business]
+                                                          %w[OverviewSavings BusinessCredit Business]
   end
 
   def site_name
