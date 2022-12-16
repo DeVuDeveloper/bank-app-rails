@@ -32,7 +32,7 @@ Bank App is Ruby on Rails application, for mobile and desktop devices. It is sof
 
 ## Live Demo
 
-([Heroku link](https://bank-app-dejan.herokuapp.com/))
+([Live preview](https://bank-app-dejan.onrender.com/))
 
 ## Getting Started 🏁
 
