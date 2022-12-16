@@ -1,7 +1,7 @@
 databases:
   - name: bank-app-rails
-    databaseName: bank-app-rails
-    user: bank-app-rails
+    databaseName: postgresql
+   
 
 services:
   - type: web
